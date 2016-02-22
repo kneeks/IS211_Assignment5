@@ -39,7 +39,7 @@ def downloadData(url):
 
 
 def imgSearch(url):
-    """Function to retrieve img percentage in file."""
+    """img percent for the following file"""
 
     tot = 0
     img = 0
