@@ -10,21 +10,22 @@ import datetime
 import logging
 import argparse
 
-def main():
 
+def main():
 
     def downloadData(url= 'https://s3.amazonaws.com/cuny-is211-spring2015/birthdays100.csv'):
         """fetches url from link"
+
         Args:
             data: url link
         """
         data = urllib2.urlopen(url)
         return data
-    
+
     def processData(data):
         """
         Processes the data from the url in order to create new dict.
-        
+
         Args:
             csvfile: data file
             mydict = new dict from data file
@@ -49,7 +50,7 @@ def main():
                 logging.warning('Error processing line# {} for ID# {}'.format(line - 1, id))                 
                 continue
         return mydict
-                
+          
     def displayPerson(id, processData):
         """
         Displays the person's info upon request
@@ -64,12 +65,12 @@ def main():
         except KeyError:
                msg = 'Make sure IDs are 1 through 100'
         return msg
-    
+
     parser = argparse.ArgumentParser()
     parser.add_argument('--url', help='The URL to fetch the CSV file.')
     args = parser.parse_args()
     logging.basicConfig(filename='error.log', filemode='w')
-    
+
     if args.url:
         csvData = downloadData(args.url)
         personData = processData(csvData)
